@@ -201,3 +201,57 @@ CREATE TABLE employee (
 | **Cascade (Foreign Key)**| Specifies automatic update or delete behavior for related rows.               |
 
 These keys and constraints help maintain data integrity, optimize queries, and enforce business rules at the database level.
+
+## Candidate Key
+
+A **Candidate Key** is a set of one or more attributes (columns) in a database table that can uniquely identify a record in that table. Candidate keys have the following properties:
+
+1. **Uniqueness**: The values of a candidate key must be unique for each row in the table.
+2. **Minimality**: A candidate key is minimal, meaning that no subset of the candidate key can uniquely identify records. In other words, you cannot remove any column from the candidate key and still maintain uniqueness.
+
+A table may have multiple candidate keys, but only one of them is chosen to be the **primary key**. The other candidate keys are known as **alternate keys**.
+
+### Example:
+
+Let's consider the following `employee` table:
+
+| emp_id | emp_name  | emp_email          | emp_phone   |
+|--------|-----------|--------------------|-------------|
+| 1      | John      | john@example.com    | 1234567890  |
+| 2      | Alice     | alice@example.com   | 2345678901  |
+| 3      | Bob       | bob@example.com     | 3456789012  |
+
+#### Candidate Keys:
+- **`emp_id`**: It is a unique identifier for each employee and could be a candidate key.
+- **`emp_email`**: It is also unique for each employee and could be a candidate key.
+- **`emp_phone`**: It is also unique for each employee and could be a candidate key.
+
+In this case, the table has **three candidate keys**: `emp_id`, `emp_email`, and `emp_phone`. One of these will be chosen as the **primary key** (typically `emp_id`), and the others (`emp_email`, `emp_phone`) would be **alternate keys**.
+
+### Difference between **Candidate Key** and **Primary Key**:
+- **Candidate Key**: Any column (or combination of columns) that can uniquely identify records in a table. There may be multiple candidate keys.
+- **Primary Key**: The candidate key selected to uniquely identify records in a table. A table can have only one primary key.
+
+### Example with Composite Candidate Key:
+
+Consider the following `course_enrollment` table:
+
+| student_id | course_id | enrollment_date |
+|------------|-----------|-----------------|
+| 1          | 101       | 2024-01-01      |
+| 1          | 102       | 2024-02-01      |
+| 2          | 101       | 2024-01-15      |
+
+#### Candidate Keys:
+- **`student_id + course_id`**: The combination of `student_id` and `course_id` can uniquely identify each enrollment. No single column can do this, so this is a **composite candidate key**.
+- **`student_id`** or **`course_id`** alone is **not** a candidate key, as they do not uniquely identify each enrollment (a student can enroll in multiple courses).
+
+In this case, the composite key `student_id + course_id` is the only candidate key, and if we choose it as the primary key, the other columns (`student_id` and `course_id`) would be alternate keys.
+
+### Key Points to Remember:
+1. A **candidate key** can consist of one or more columns (composite key).
+2. A **primary key** is the selected candidate key for uniquely identifying records.
+3. **Alternate keys** are candidate keys that are not selected as the primary key.
+4. There can be multiple candidate keys in a table, but only one primary key.
+
+
