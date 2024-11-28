@@ -4,9 +4,9 @@ Popular Patterns
 
 Here’s the list formatted properly:
 
-1. Service Discovery  
-2. CQRS  
-3. Event Sourcing  
+1. Service Discovery  (https://github.com/learning-project-01/lapetus/blob/main/system-design/microservices/02-pattern-service-discovery.md)
+2. CQRS  (https://github.com/learning-project-01/lapetus/blob/main/system-design/microservices/02-pattern-cqrs.md)
+3. Event Sourcing  (https://github.com/learning-project-01/lapetus/blob/main/system-design/microservices/02-pattern-event-sourcing.md)
 4. Circuit Breaker  
 5. Rate Limiting  
 6. Retry  
@@ -19,5 +19,5 @@ Here’s the list formatted properly:
     - Orchestrator
 12. Sharding  
 13. Throttling
-14. Transactional Outbox
+14. Transactional Outbox (https://github.com/learning-project-01/lapetus/blob/main/system-design/microservices/02-pattern-transactional-outbox.md)
 15. API Composition
