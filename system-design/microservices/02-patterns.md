@@ -18,4 +18,6 @@ Here’s the list formatted properly:
     - Choreography
     - Orchestrator
 12. Sharding  
-13. Throttling  
+13. Throttling
+14. Transactional Outbox
+15. API Composition
