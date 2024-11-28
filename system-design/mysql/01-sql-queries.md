@@ -3,6 +3,135 @@
 - Return last 3 animal types from animal table. Last meaning frequency count from the bottom when sorted in increasing order.
 - Find employees earning more than their manager's salary using CTE, JOIN, SUBQUERY, INNER QUERY
 
+
+## Finding employees and project names who are working on more than one project
+
+To solve the problem of finding employees and project names who are working on more than one project, we can follow these steps using the provided table structure:
+
+### Given Tables:
+
+1. **`department` table**:
+   ```sql
+   CREATE TABLE department (
+       dept_id INT AUTO_INCREMENT PRIMARY KEY,
+       dept_name VARCHAR(100)
+   );
+   ```
+
+2. **`employee` table**:
+   ```sql
+   CREATE TABLE employee (
+       emp_id INT AUTO_INCREMENT PRIMARY KEY,
+       emp_name VARCHAR(100),
+       dept_id INT,
+       FOREIGN KEY (dept_id) REFERENCES department(dept_id)
+   );
+   ```
+
+3. **`project` table**:
+   ```sql
+   CREATE TABLE project (
+       project_id INT AUTO_INCREMENT PRIMARY KEY,
+       project_name VARCHAR(100),
+       start_date DATE,
+       end_date DATE
+   );
+   ```
+
+4. **`project_assignment` table**:
+   ```sql
+   CREATE TABLE project_assignment (
+       emp_id INT,
+       project_id INT,
+       start_date DATE,
+       end_date DATE,
+       PRIMARY KEY (emp_id, project_id),
+       FOREIGN KEY (emp_id) REFERENCES employee(emp_id),
+       FOREIGN KEY (project_id) REFERENCES project(project_id)
+   );
+   ```
+
+### Problem Statement:
+We need to find the employees and project names who are working on more than one project.
+
+### Query Explanation:
+
+To find employees working on more than one project, we can:
+1. Join the `project_assignment` table with the `employee` and `project` tables.
+2. Group the result by `emp_id` and `emp_name`.
+3. Use the `HAVING` clause to filter employees who are assigned to more than one project.
+
+### Query:
+
+```sql
+SELECT e.emp_name, p.project_name
+FROM employee e
+JOIN project_assignment pa ON e.emp_id = pa.emp_id
+JOIN project p ON pa.project_id = p.project_id
+GROUP BY e.emp_id, e.emp_name, p.project_name
+HAVING COUNT(DISTINCT p.project_id) > 1;
+```
+
+### Explanation:
+1. **Join the tables**:
+   - `employee` table is joined with `project_assignment` using `emp_id`.
+   - `project_assignment` is joined with the `project` table using `project_id`.
+
+2. **Group by**:
+   - We group by `emp_id`, `emp_name`, and `project_name` to get the employee’s name and the associated project they are working on.
+
+3. **Having clause**:
+   - The `HAVING COUNT(DISTINCT p.project_id) > 1` condition ensures that we only select employees who are working on more than one distinct project.
+
+### Example Data:
+
+#### `employee` table:
+```sql
+| emp_id | emp_name |
+|--------|----------|
+| 1      | Alice    |
+| 2      | Bob      |
+| 3      | Charlie  |
+```
+
+#### `project` table:
+```sql
+| project_id | project_name   |
+|------------|----------------|
+| 1          | Project A      |
+| 2          | Project B      |
+| 3          | Project C      |
+```
+
+#### `project_assignment` table:
+```sql
+| emp_id | project_id | start_date | end_date   |
+|--------|------------|------------|------------|
+| 1      | 1          | 2024-01-01 | 2024-12-31 |
+| 1      | 2          | 2024-03-01 | 2024-12-31 |
+| 2      | 2          | 2024-01-01 | 2024-06-30 |
+| 2      | 3          | 2024-07-01 | 2024-12-31 |
+| 3      | 1          | 2024-02-01 | 2024-12-31 |
+```
+
+### Result:
+
+```sql
+| emp_name | project_name |
+|----------|--------------|
+| Alice    | Project A    |
+| Alice    | Project B    |
+| Bob      | Project B    |
+| Bob      | Project C    |
+```
+
+### Explanation of the Result:
+- Alice is working on both **Project A** and **Project B**.
+- Bob is working on **Project B** and **Project C**.
+- Charlie is only working on **Project A**, so they are not included in the result.
+
+This query provides a list of employees and their associated projects, but only those who are working on more than one project.
+
 ## Find employees earning more than their manager's salary using CTE, JOIN, SUBQUERY, INNER QUERY
 
 Here are the solutions to find employees earning more than their manager's salary using different approaches:
