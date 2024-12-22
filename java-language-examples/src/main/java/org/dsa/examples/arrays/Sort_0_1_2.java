@@ -2,6 +2,7 @@ package org.dsa.examples.arrays;
 
 import utils.ArrayUtils;
 
+// https://leetcode.com/problems/sort-colors/submissions/1485753425/
 public class Sort_0_1_2 {
 
   public static final int ZERO = 0;
@@ -51,7 +52,7 @@ public class Sort_0_1_2 {
     int indexTracker_2 = arr.length - 1;
 
     int index = 0;
-    while (index < indexTracker_2) {
+    while (index <= indexTracker_2) {
 
       int currentValue = arr[index];
       if (currentValue == ZERO) {
