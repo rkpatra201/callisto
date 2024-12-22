@@ -24,6 +24,7 @@ public class Sort_0_1_2Test {
   @Parameterized.Parameters(name = "Test case {index}: input={0}, expected={1}")
   public static Collection<Object[]> data1() {
     return Arrays.asList(new Object[][]{
+        {new int[]{2, 0, 1}, new int[]{0, 1, 2}},
         {new int[]{0, 1, 1, 2, 0, 1, 0, 2}, new int[]{0, 0, 0, 1, 1, 1, 2, 2}},
         {new int[]{0, 1, 2}, new int[]{0, 1, 2}},
         {new int[]{1, 0, 2}, new int[]{0, 1, 2}},
