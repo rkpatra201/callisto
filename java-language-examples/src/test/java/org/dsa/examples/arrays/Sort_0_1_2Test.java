@@ -47,4 +47,11 @@ public class Sort_0_1_2Test {
     sort_0_1_2.solution_1(input);
     Assert.assertArrayEquals(expectedValue, input);
   }
+
+  @Test
+  public void solution_2() {
+    Sort_0_1_2 sort_0_1_2 = new Sort_0_1_2();
+    sort_0_1_2.solution_2(input);
+    Assert.assertArrayEquals(expectedValue, input);
+  }
 }
