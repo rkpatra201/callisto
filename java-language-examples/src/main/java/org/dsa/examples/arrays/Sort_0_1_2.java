@@ -78,4 +78,25 @@ public class Sort_0_1_2 {
     }
   }
 
+  public void solution_2(int[] arr){
+    int index = 0;
+    int zeroIndex = 0;
+    int twoIndex = arr.length - 1;
+
+    while(index <= twoIndex){
+      int v = arr[index];
+      if( v == 0){
+        ArrayUtils.swap(arr, index, zeroIndex);
+        zeroIndex++;
+        index++;
+      }
+      else if(v == 2){
+        ArrayUtils.swap(arr, index, twoIndex);
+        twoIndex--;
+      }
+      else if(v == 1){
+        index++;
+      }
+    }
+  }
 }
