@@ -7,6 +7,8 @@
    1.3. Additional Examples on ConfigMap
    
    1.4. Debugging Tips for ConfigMap
+
+   1.5. ConfigMap Inject to Pod using Volume Mount
    
 
 2. Secret creation and inject into pod env
@@ -333,6 +335,96 @@ Inspect the logs of your application container to identify any runtime issues re
 ```bash
 kubectl logs <pod-name>
 ```
+
+## ConfigMap Inject to Pod using Volume Mount
+
+To inject a ConfigMap into a pod using a volume mount, you can follow these steps:
+
+---
+
+### 1. **Create the ConfigMap**
+You can create a ConfigMap in the same way as before:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example-config
+data:
+  APP_ENV: production
+  APP_DEBUG: "false"
+  APP_VERSION: "1.0"
+```
+
+Apply the ConfigMap:
+```bash
+kubectl apply -f configmap.yaml
+```
+
+---
+
+### 2. **Inject ConfigMap into Pod Using Volume Mount**
+
+Modify the pod or deployment definition to mount the ConfigMap as a volume.
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+spec:
+  containers:
+  - name: app-container
+    image: nginx
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/config
+      readOnly: true
+  volumes:
+  - name: config-volume
+    configMap:
+      name: example-config
+```
+
+In this example:
+- **Volume** is created from the ConfigMap (`configMap`).
+- **Volume mount** is specified in the container (`mountPath: /etc/config`).
+
+---
+
+### 3. **Apply the Pod Configuration**
+
+```bash
+kubectl apply -f pod.yaml
+```
+
+---
+
+### 4. **Verify the ConfigMap Volume in the Pod**
+
+Once the pod is running, verify that the ConfigMap is mounted as files inside the container.
+
+```bash
+kubectl exec -it <pod-name> -- ls /etc/config
+```
+
+You should see files corresponding to the keys in the ConfigMap (`APP_ENV`, `APP_DEBUG`, `APP_VERSION`).
+
+---
+
+### 5. **Access the ConfigMap Values Inside the Container**
+
+Inside the pod, the ConfigMap keys will appear as files with their content as the file content. You can access them like regular files:
+```bash
+kubectl exec -it <pod-name> -- cat /etc/config/APP_ENV
+```
+
+---
+
+This approach allows the application inside the container to read the ConfigMap data from mounted files instead of environment variables.
+
+
+
 
 ---
 
