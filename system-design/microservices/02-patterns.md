@@ -2,7 +2,7 @@ https://learn.microsoft.com/en-us/azure/architecture/patterns/
 
 Popular Patterns
 
-# Database Patters
+# Data Management Patterns
 
 1. Database Per Service
 2. Shared Database
@@ -36,13 +36,19 @@ Popular Patterns
 
 1. Saga
 2. Two Phase Commit
-3. Transactional Outbox
+
+# Transactional Messaging Pattern
+
+1. Transactional Outbox
+2. Transactional log tailing
+3. Polling Publisher 
 
 # Observability Patterns
 
 1. Logging (Splunk)
 2. Tracing (Zipkin)
 3. Monitoring (Prometheus)
+4. Health Check API
 
 # Testing Patterns
 
@@ -57,3 +63,5 @@ Popular Patterns
 3. API Gateway
 4. Service Discovery
 5. Ambasaddor
+6. Backend For Frontend
+7. Idempotent Consumer  
