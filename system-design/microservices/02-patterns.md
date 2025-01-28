@@ -26,9 +26,11 @@ Popular Patterns
 
 # Deployment Patterns
 
-1. Service Instance Per Host
-2. Service Instance Per Container
+1. Service Instance(s) Per Host
+2. Service Instance Per Container / VM
 3. Serverless
+4. Sidecar
+5. Service Mesh
 
 # Transactional Pattern
 
@@ -55,4 +57,3 @@ Popular Patterns
 3. API Gateway
 4. Service Discovery
 5. Ambasaddor
-6. Sidecar (Container pattern only)
