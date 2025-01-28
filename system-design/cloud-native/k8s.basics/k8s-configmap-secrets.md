@@ -1,6 +1,12 @@
-# ConfigMap creation and inject into pod env
-# Secret creation and inject into pod env
-# Consume Secret from AWS secret manager.
+1. ConfigMap creation and inject into pod env
+
+   1.1. ConfigMap and Inject to a Pod
+   1.2. ConfigMap and Deployment
+   1.3. Additional Examples on ConfigMap
+   1.4. Debugging Tips for ConfigMap
+
+2. Secret creation and inject into pod env
+3. Consume Secret from AWS secret manager.
 
 
 To create a ConfigMap in Kubernetes and inject its values into a pod’s environment variables, follow these steps:
@@ -98,7 +104,7 @@ envFrom:
 ```
 - Use `configMapKeyRef` when you need to specify individual keys.
 
-## ConfigMap with deployment
+## ConfigMap and deployment
 
 Here's how you can inject a ConfigMap into a **Deployment**:
 
