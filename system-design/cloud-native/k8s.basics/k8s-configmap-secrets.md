@@ -1,9 +1,10 @@
 1. ConfigMap creation and inject into pod env
-
+  <ul>
    1.1. ConfigMap and Inject to a Pod
    1.2. ConfigMap and Deployment
    1.3. Additional Examples on ConfigMap
    1.4. Debugging Tips for ConfigMap
+   </ul>
 
 2. Secret creation and inject into pod env
 3. Consume Secret from AWS secret manager.
