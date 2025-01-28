@@ -9,6 +9,8 @@
    1.4. Debugging Tips for ConfigMap
 
    1.5. ConfigMap Inject to Pod using Volume Mount
+
+   1.6. Why PVC not required when ConfigMap mounted using a volume 
    
 
 2. Secret creation and inject into pod env
@@ -428,5 +430,63 @@ This approach allows the application inside the container to read the ConfigMap 
 
 ---
 
-Would you like me to simulate an example of troubleshooting or provide a more advanced use case?
+## Why PVC not required when ConfigMap mounted using a volume 
+
+In Kubernetes, you can mount a ConfigMap as a volume without the need for a **PersistentVolumeClaim (PVC)** because a ConfigMap itself is an in-memory resource, not requiring persistent storage.
+
+When you use a ConfigMap in this way, Kubernetes creates an in-memory volume that contains the ConfigMap's data, and this volume is mounted to the pod. Since ConfigMaps are designed to be small and not persist across pod restarts (unless explicitly recreated), you don't need a PVC to back it.
+
+### **Key Points:**
+- **No PVC required**: ConfigMaps are not tied to persistent storage, they are in-memory resources.
+- **ConfigMap as Volume**: The ConfigMap is directly mounted as a volume into your container.
+
+Here’s how it works:
+
+---
+
+### Example of ConfigMap Volume Mount without PVC
+
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: example-pod
+spec:
+  containers:
+  - name: app-container
+    image: nginx
+    volumeMounts:
+    - name: config-volume
+      mountPath: /etc/config
+      readOnly: true
+  volumes:
+  - name: config-volume
+    configMap:
+      name: example-config
+```
+
+#### Breakdown:
+- **`volumes`**: Specifies that the `example-config` ConfigMap should be mounted as a volume.
+- **`volumeMounts`**: Specifies where in the container's filesystem the volume will be mounted (`/etc/config` in this case).
+
+The ConfigMap’s keys (like `APP_ENV`, `APP_DEBUG`, etc.) will be available as files in the `/etc/config` directory.
+
+---
+
+### No Persistent Volume Involved
+- **PersistentVolume (PV)** and **PersistentVolumeClaim (PVC)** are used when you need to store data that survives pod restarts or when you need to use external storage (like a disk or cloud storage).
+- **ConfigMap Volume** is an ephemeral, in-memory volume that gets mounted directly into the pod and doesn't need a PVC.
+
+---
+
+### Verification:
+To verify the mounted ConfigMap, you can check the contents of the mounted directory in the pod:
+
+```bash
+kubectl exec -it <pod-name> -- ls /etc/config
+```
+
+You should see files named after the keys in the ConfigMap (e.g., `APP_ENV`, `APP_DEBUG`, `APP_VERSION`), and the file contents will be the values of the respective keys.
+
+Let me know if you need further details!
 
