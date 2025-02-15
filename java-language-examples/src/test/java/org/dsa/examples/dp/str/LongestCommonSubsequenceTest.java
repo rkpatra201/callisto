@@ -2,7 +2,6 @@ package org.dsa.examples.dp.str;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
 
 public class LongestCommonSubsequenceTest {
 

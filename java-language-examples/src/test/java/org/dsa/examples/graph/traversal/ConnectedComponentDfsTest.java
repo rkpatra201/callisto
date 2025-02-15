@@ -7,7 +7,6 @@ import utils.GraphUtils;
 import java.util.HashSet;
 import java.util.Set;
 
-import static org.junit.Assert.*;
 
 public class ConnectedComponentDfsTest {
 

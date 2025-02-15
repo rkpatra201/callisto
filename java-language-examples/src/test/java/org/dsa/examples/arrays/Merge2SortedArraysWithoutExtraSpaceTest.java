@@ -1,6 +1,5 @@
 package org.dsa.examples.arrays;
 
-import junit.framework.TestCase;
 import org.junit.Test;
 
 import java.util.Arrays;

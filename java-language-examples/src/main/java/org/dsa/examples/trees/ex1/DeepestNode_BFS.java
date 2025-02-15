@@ -11,7 +11,6 @@ public class DeepestNode_BFS {
 
 
   public static TreeNode solution(TreeNode root) {
-    int result = traverse(root);
     System.out.println("height: "+height);
     return deepestNode;
   }
