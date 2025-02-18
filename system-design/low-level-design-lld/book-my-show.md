@@ -1,3 +1,5 @@
+REFERENCES: https://dev-shivansh95.medium.com/low-level-design-for-bookmyshow-8db8465e560a
+
 Let's design the low-level design (LLD) for a **BookMyShow-like ticket booking system**, covering the following aspects:  
 
 1. **Requirements**  
