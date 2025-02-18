@@ -13,7 +13,7 @@ public class NextGreaterElement {
     for (int i = arr.length - 1; i >= 0; i--) { // traverse from left to make it ordered
       int element = arr[i];
       // when top of stack has small value than the current element, do pop()
-      if (!stack.isEmpty() && stack.peek() < element) {
+      while (!stack.isEmpty() && stack.peek() < element) {
         stack.pop(); // pop once
       }
 
