@@ -13,7 +13,7 @@ public class WordDictionaryChain {
   public List<String> solution(String a, String b, String[] options){
 
     if(a.equals(b)){
-      return new ArrayList(){{
+      return new ArrayList<String>(){{
 
       }};
     }
