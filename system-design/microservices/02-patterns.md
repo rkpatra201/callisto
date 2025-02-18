@@ -21,7 +21,7 @@ Popular Patterns
 1. Circuit Breaker
 2. Retry
 3. Timeout
-4. BulkHead
+4. BulkHead: https://www.vinsguru.com/bulkhead-pattern/
 5. Rate Limiting
 
 # Deployment Patterns
