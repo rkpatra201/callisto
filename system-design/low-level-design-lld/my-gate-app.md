@@ -226,3 +226,71 @@ Admin     ---> [ Manage Users ] ---> [ Manage Logs ]
 The **MyGate App Design** is structured to handle **visitor management, resident interactions, and security monitoring** in a **scalable and secure** way. 🚀  
 
 Would you like a **detailed sequence diagram** for visitor entry? 😊
+
+
+### **Sequence Diagram for Visitor Entry in MyGate App**  
+
+The following sequence diagram illustrates the **visitor entry flow** in the MyGate app, covering security check-in, resident approval, and final access.  
+
+---
+
+### **Actors Involved**  
+1. **Visitor** (Guest, Delivery Agent, Service Provider)  
+2. **Security Guard** (At the main gate)  
+3. **Resident** (Approves visitor entry)  
+4. **MyGate Backend Services**  
+   - **Visitor Management Service**  
+   - **Notification Service**  
+
+---
+
+### **Sequence Flow**
+```plaintext
+Visitor → Security Guard: Requests entry (Provides name, phone, flat number)
+Security Guard → Visitor Management Service: Logs visitor request
+Visitor Management Service → Resident: Sends visitor approval request (Push Notification/OTP)
+Resident → Visitor Management Service: Approves/DENIES entry
+Visitor Management Service → Security Guard: Sends approval/denial response
+Security Guard → Visitor: Allows/Denies entry based on approval status
+Visitor Management Service → Notification Service: Sends entry confirmation notification to Resident
+```
+
+---
+
+### **UML Sequence Diagram Representation**
+```plaintext
+    Visitor                Security Guard       Visitor Management Service         Resident             Notification Service
+      |                           |                         |                          |                          |
+      | --- Request Entry -------> |                         |                          |                          |
+      |                           | --- Log Entry ----------> |                          |                          |
+      |                           |                         | --- Notify Resident -----> |                          |
+      |                           |                         |                          |                          |
+      |                           |                         | <--- Resident Approves -- |                          |
+      |                           | <--- Approval/Denial --- |                          |                          |
+      |                           |                         |                          |                          |
+      | <--- Entry Allowed/Denied |                         |                          |                          |
+      |                           |                         | --- Notify Resident ----> |                          |
+      |                           |                         |                          | --- Send Confirmation ---> |
+```
+
+---
+
+### **Key Scenarios**
+1. **Visitor Approved**:  
+   - Resident gets a notification and approves entry.  
+   - Security gets confirmation and allows entry.  
+   - Visitor check-in is recorded.  
+
+2. **Visitor Denied**:  
+   - Resident denies the request.  
+   - Security gets notified and denies access.  
+
+3. **Pre-Approved Visitors**:  
+   - Residents pre-approve guests via the app.  
+   - No need for live approval during entry.  
+
+---
+
+Would you like me to generate an **actual UML diagram image** for this? 🚀
+
+Here is the UML sequence diagram illustrating the visitor entry process in the MyGate app. Let me know if you need any modifications or additional details! 🚀
