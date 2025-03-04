@@ -22,8 +22,9 @@ public class FindRootToLeafPathWithTargetSum_DFS {
       System.out.println(paths);
       return true;
     }
-    boolean flag = traverse2(root.left, targetSum - root.data) ||
-        traverse2(root.right, targetSum - root.data);
+    int remainSum = targetSum - root.data;
+    boolean flag = traverse2(root.left, remainSum) ||
+        traverse2(root.right, remainSum);
     if (!flag) {
       paths.remove(paths.size() - 1);
     }
