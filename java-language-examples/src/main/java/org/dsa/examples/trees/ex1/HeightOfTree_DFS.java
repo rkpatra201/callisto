@@ -1,6 +1,7 @@
 package org.dsa.examples.trees.ex1;
 
 import org.dsa.examples.trees.traversal.TreeNode;
+
 // The height of a tree is the [length of the path from the root to the deepest node] in the tree
 // Math.max(left, height) + 1
 // height of single node = 0, full binary tree number of nodes = 2^h+1 -1
@@ -12,7 +13,10 @@ public class HeightOfTree_DFS {
   }
 
   private static int traverse(TreeNode root) {
-    if (root.left == null && root.right== null) { // leaf node (single node)
+    if (root == null) {
+      return 0;
+    }
+    if (root.left == null && root.right == null) { // leaf node (single node)
       return 0;
     }
     int lh = traverse(root.left);
