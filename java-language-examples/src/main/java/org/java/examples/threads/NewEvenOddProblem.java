@@ -1,19 +1,24 @@
 package org.java.examples.threads;
 
 /**
- * chnage state and then notify + wait
+ * display
+ * increment
+ * notify
+ * wait
+ *
+ * and at the end when value crossed limit then do
+ * notify
  */
 public class NewEvenOddProblem {
 
   private static final int limit = 10;
 
   public static void main(String[] args) {
-    String lock = "lock";
     ValueWrapper v = new ValueWrapper(0);
-    EvenWorker evenWorker = new EvenWorker(v, "EVEN");
-    EvenWorker oddWorker = new EvenWorker(v, "ODD");
-    new Thread(evenWorker).start();
-    new Thread(oddWorker).start();
+    Printer evenPrinter = new Printer(v, "EVEN");
+    Printer oddPrinter = new Printer(v, "ODD");
+    new Thread(evenPrinter).start();
+    new Thread(oddPrinter).start();
   }
 
   private static class ValueWrapper {
@@ -24,22 +29,20 @@ public class NewEvenOddProblem {
     }
   }
 
-  private static class EvenWorker implements Runnable {
+  private static class Printer implements Runnable {
     private final ValueWrapper valueWrapper;
-    private String worker;
-    private String lock;
+    private String workerName;
 
-    public EvenWorker(ValueWrapper valueWrapper, String lock) {
+    public Printer(ValueWrapper valueWrapper, String workerName) {
       this.valueWrapper = valueWrapper;
-      this.worker = lock;
-      this.lock = lock;
+      this.workerName = workerName;
     }
 
     @Override
     public void run() {
       synchronized (valueWrapper) {
         while (valueWrapper.value <= 10) {
-          System.out.println(this.lock + ":" + valueWrapper.value);
+          System.out.println(this.workerName + ":" + valueWrapper.value);
           valueWrapper.value = valueWrapper.value + 1;
           valueWrapper.notify();
           try {
