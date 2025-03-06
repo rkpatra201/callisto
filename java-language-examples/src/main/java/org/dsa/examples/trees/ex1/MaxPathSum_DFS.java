@@ -2,6 +2,10 @@ package org.dsa.examples.trees.ex1;
 
 import org.dsa.examples.trees.traversal.TreeNode;
 
+/**
+ * The Maximum Path Sum in a binary tree problem involves finding the maximum sum of values along any path in the tree.
+ * A path can start and end at any node but must follow parent-child connections.
+ */
 public class MaxPathSum_DFS {
 
   public static int solution(TreeNode treeNode) {
@@ -9,7 +13,7 @@ public class MaxPathSum_DFS {
     return maxSum;
   }
 
-  private static int maxSum = 0;
+  private static int maxSum = Integer.MIN_VALUE;
 
   private static int traverse(TreeNode root) {
     if (root == null) {
