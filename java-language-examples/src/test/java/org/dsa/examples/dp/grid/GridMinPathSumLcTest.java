@@ -2,9 +2,7 @@ package org.dsa.examples.dp.grid;
 
 import org.junit.Test;
 
-import static org.junit.Assert.*;
-
-public class GridMinPathSumRecursion1Test {
+public class GridMinPathSumLcTest {
 
   @Test
   public void solution() {
@@ -12,7 +10,7 @@ public class GridMinPathSumRecursion1Test {
         {1,3},
         {1,5}
     };
-    int result = new GridMinPathSumRecursion1().solution(grid);
+    int result = new Lc_GridMinPathSum().solution(grid);
     System.out.println(result);
   }
 }

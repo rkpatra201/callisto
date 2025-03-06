@@ -3,7 +3,7 @@ package org.dsa.examples.dp.grid;
 import java.util.Arrays;
 
 // https://leetcode.com/problems/unique-paths/submissions/1564480666/
-public class GridPathCountWaysRecursion1 {
+public class Lc_GridUniquePath {
 
   public int solution(int m, int n) {
     memo = new int[m][n];

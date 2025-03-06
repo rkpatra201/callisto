@@ -2,7 +2,7 @@ package org.dsa.examples.dp.grid;
 
 import java.util.Arrays;
 // https://leetcode.com/problems/minimum-path-sum/submissions/1564602564/
-public class GridMinPathSumRecursion1 {
+public class Lc_GridMinPathSum {
 
   public int solution(int[][] grid) {
     int n = grid[0].length;
