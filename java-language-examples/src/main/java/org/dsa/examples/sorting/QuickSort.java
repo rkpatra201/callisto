@@ -1,6 +1,6 @@
-package org.dsa.examples.arrays;
+package org.dsa.examples.sorting;
 
-public class SortWithQuick {
+public class QuickSort {
 
   public void solution(int[] nums) {
     quickSort(nums, 0, nums.length - 1);
