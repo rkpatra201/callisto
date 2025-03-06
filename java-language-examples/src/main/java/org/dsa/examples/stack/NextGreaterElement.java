@@ -17,6 +17,7 @@ public class NextGreaterElement {
         stack.pop(); // pop once
       }
 
+      // update your list before pushing element to stack
       if (stack.isEmpty()) { // when stack is empty
         list.add(-1);
       } else {
