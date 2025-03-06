@@ -1,5 +1,6 @@
 package org.dsa.examples.arrays;
 
+import org.dsa.examples.sorting.Merge2SortedArraysWithoutExtraSpace;
 import org.junit.Test;
 
 import java.util.Arrays;

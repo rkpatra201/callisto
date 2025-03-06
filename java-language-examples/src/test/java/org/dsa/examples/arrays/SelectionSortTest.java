@@ -1,5 +1,6 @@
 package org.dsa.examples.arrays;
 
+import org.dsa.examples.sorting.SelectionSort;
 import org.junit.Assert;
 import org.junit.Test;
 
