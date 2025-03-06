@@ -2,6 +2,12 @@ package org.dsa.examples.arrays;
 
 import utils.ArrayUtils;
 
+/**
+ * this does the partition but never keeps the relative order of elements
+ *
+ * we need relative order of elements with constant space: o(1) and
+ * time complexity : o(n)
+ */
 public class PartitionArraySmallAndLarge {
 
   public void solution(int[] arr, int pivot) {
