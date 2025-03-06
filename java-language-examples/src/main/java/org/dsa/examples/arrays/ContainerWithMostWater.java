@@ -17,9 +17,9 @@ public class ContainerWithMostWater {
         int leftValue = height[left];
         int rightValue = height[right];
 
-        int minValue = Math.min(leftValue, rightValue);
-
-        maxWater = Math.max(maxWater, minValue * (right - left));
+        int minHeight = Math.min(leftValue, rightValue);
+        int currentMax = minHeight * (right - left);
+        maxWater = Math.max(maxWater,currentMax);
 
         left++;
       } else {
@@ -27,9 +27,9 @@ public class ContainerWithMostWater {
         int leftValue = height[left];
         int rightValue = height[right];
 
-        int minValue = Math.min(leftValue, rightValue);
-
-        maxWater = Math.max(maxWater, minValue * (right - left));
+        int minHeight = Math.min(leftValue, rightValue);
+        int currentMax = minHeight * (right - left);
+        maxWater = Math.max(maxWater,currentMax);
 
         right--;
       }
