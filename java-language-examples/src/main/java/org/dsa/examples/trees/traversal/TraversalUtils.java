@@ -7,10 +7,6 @@ import java.util.List;
 
 public class TraversalUtils {
 
-  public List<Integer> boundary_traverse() {
-    return null;
-  }
-
   public List<Integer> left_view_traverse(TreeNode root) {
     List<Integer> list = new ArrayList<>();
     Deque<TreeNode> queue = new LinkedList<>();
@@ -56,17 +52,8 @@ public class TraversalUtils {
     return list;
   }
 
-  public List<Integer> vertical_order_traverse() {
-    return null;
-  }
 
-  public List<Integer> top_view_traverse() {
-    return null;
-  }
 
-  public List<Integer> bottom_view_traverse() {
-    return null;
-  }
 
   /**
    * add root node to deque
