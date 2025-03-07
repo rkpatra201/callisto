@@ -21,12 +21,15 @@ public class MaxInSortedAndRotatedArray {
     while (start < end) {
       int mid = start + (end - start) / 2;
 
-      if (nums[mid] > nums[end]) {
-        // Maximum is in the left half (including mid)
-        end = mid;
-      } else {
-        // Maximum is in the right half
+      // when mid is bigger than its next element, surely this mid is bigger in array
+      if (mid < nums.length - 1 && nums[mid] > nums[mid + 1]) {
+        return nums[mid];
+      }
+
+      if (nums[start] <= nums[mid] && nums[mid] > nums[end]) { // left sorted but right is not
         start = mid + 1;
+      } else {
+        end = mid - 1;
       }
 
     }
