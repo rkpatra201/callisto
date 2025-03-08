@@ -14,7 +14,7 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-public class TargetSumTest {
+public class TargetSumAllTest {
 
   /**
    *  use each item of inputs only once
