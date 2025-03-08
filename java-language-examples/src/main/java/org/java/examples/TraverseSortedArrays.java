@@ -1,6 +1,6 @@
 package org.java.examples;
 
-public class MergeSortedArrays {
+public class TraverseSortedArrays {
     public static void main(String[] args) {
         int[] arr1 = {10, 20, 30, 40, 50};
         int[] arr2 = {5, 10, 15, 20, 25, 30, 35, 40, 50};
