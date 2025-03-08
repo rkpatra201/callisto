@@ -5,7 +5,7 @@ import org.junit.Test;
 
 import java.util.Arrays;
 
-public class HowTargetSumAllTabulationTest {
+public class HowTargetSumAllApproachesTabulationTest {
 
   @Test
   public void solution() {
