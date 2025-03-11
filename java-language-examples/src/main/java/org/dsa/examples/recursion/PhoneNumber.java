@@ -4,53 +4,50 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+// https://leetcode.com/problems/letter-combinations-of-a-phone-number/submissions/1569971711/
 public class PhoneNumber {
-  public List<List<Character>> solution(List<Integer> values)
-  {
+  public List<String> solution(String digits) {
     String[] numStrs = {"0",
+        "",
         "abc",
         "def",
         "ghi",
         "jkl",
         "mno",
-        "pqr",
+        "pqrs",
         "tuv",
-        "wxz",
+        "wxyz",
         "+"
     };
 
-    List<Character> enteredValues = new ArrayList<>();
-    for(int value: values){
-      String valueStr = numStrs[value];
-      List<Character> charValues = valueStr.chars()
-          .mapToObj(e-> (char)e)
-              .collect(Collectors.toList());
-      enteredValues.addAll(charValues);
-    }
+    List<String> solutions = new ArrayList<>();
 
-    List<List<Character>> solutions = new ArrayList<>();
-    numToChars(enteredValues,0, new ArrayList<>(), solutions, values.size());
-    System.out.println(solutions);
-    return solutions;
+    List<String> options = digits.chars().mapToObj(key-> (char)key).map(key->
+            Character.digit(key, 10)
+        ).map(key -> numStrs[key])
+        .toList();
+
+    System.out.println(options);
+    return recursive(options, 0, "");
   }
 
-  private void numToChars(List<Character> charValues,
-                          int index,
-                          List<Character> current,
-                          List<List<Character>> solutions,
-                          int setSize){
-    if(index == charValues.size()){
-      if(setSize == current.size()){
-        solutions.add(new ArrayList<>(current));
+
+  private List<String> recursive(List<String> options, int index, String tempStr) {
+    if (index == options.size()) {
+      System.out.println(tempStr);
+      if(tempStr.length()==0){
+        return new ArrayList<>();
       }
-      return;
+      return new ArrayList<>(List.of(tempStr));
     }
 
-    List<Character> includes = new ArrayList<>(current);
-    includes.add(charValues.get(index));
-    numToChars(charValues, index + 1, includes, solutions, setSize);
+    List<String> result = new ArrayList<>();
+    for (int i = 0; i < options.get(index).length(); i++) {
+      char current = options.get(index).charAt(i);
+      result.addAll(recursive(options, index + 1, tempStr + current));
+    }
 
-    List<Character> excludes = new ArrayList<>(current);
-    numToChars(charValues, index + 1, excludes, solutions, setSize);
+//    System.out.println(result);
+    return result;
   }
 }

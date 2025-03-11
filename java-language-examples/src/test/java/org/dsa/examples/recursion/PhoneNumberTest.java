@@ -10,6 +10,6 @@ public class PhoneNumberTest {
 
   @Test
   public void solution() {
-    new PhoneNumber().solution(Arrays.asList(2, 3, 4));
+    new PhoneNumber().solution("23");
   }
 }
