@@ -113,6 +113,9 @@ public class NQueen {
       Position p = new Position(row, col);
       positionList.add(p);
       solveNQueenAllSolns(n, row + 1, positionList);
+//      if (flag) {
+//        return true; // as we want to find one solution, so return from here without backtrack
+//      }
       positionList.remove(p);
     }
 
