@@ -60,13 +60,15 @@ public class WordChainSmallestPath {
                                        Set<String> wordList,
                                        List<String> paths,
                                        Set<String> visited) {
-    paths.add(startWord);
+//    paths.add(startWord);
 
     if (startWord.equals(endWord)) {
       return new ArrayList<>(List.of(endWord));
     }
 
     List<String> smallest = null;
+    visited.add(startWord);
+
     for (String word : wordList) {
 
       if (visited.contains(word)) {
@@ -74,21 +76,22 @@ public class WordChainSmallestPath {
       }
 
       if (diffCount(startWord, word) == 1) {
-        visited.add(word);
         List<String> result = solution(word, endWord, wordList, paths, visited);
         if (result != null) {
           List<String> newList = new ArrayList<>(result);
-          newList.add(0, startWord); // [abc, dbc, dec, dei, deh, dez, def]
-          if (smallest == null || smallest.size() < newList.size()) {
+//          newList.add(0, startWord); // [abc, dbc, dec, dei, deh, dez, def]
+          if (smallest == null || smallest.size() > newList.size()) {
             smallest = newList;
           }
         }
-        visited.remove(word);
       }
     }
 
-    paths.remove(paths.size() - 1);
-    smallest = smallest == null ? null : new ArrayList<>(smallest);
+    visited.remove(startWord);
+
+    smallest.add(0, startWord);
+//    paths.remove(paths.size() - 1);
+    smallest = new ArrayList<>(smallest);
     return smallest;
   }
 }
