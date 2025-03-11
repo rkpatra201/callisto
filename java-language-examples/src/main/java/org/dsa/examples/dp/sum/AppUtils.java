@@ -50,4 +50,30 @@ public class AppUtils {
     return destination;
   }
 
+  public static int max(int... arr) {
+    int max = arr[0];
+    for (int i : arr) {
+      max = Math.max(i, max);
+    }
+    return max;
+  }
+
+  public static int min(int... arr) {
+    int min = arr[0];
+    for (int i : arr) {
+      min = Math.min(i, min);
+    }
+    return min;
+  }
+
+  public static String findLongestStr(String... args){
+    String result = args[0];
+    for(String input:args){
+      if(input.length() > result.length()){
+        result = input;
+      }
+    }
+    return result;
+  }
+
 }
