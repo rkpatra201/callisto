@@ -8,8 +8,8 @@ public class EditDistanceOperation {
   // recursion
   @Test
   public void solutionRecursive() {
-    String x = "cut";
-    String y = "cat";
+    String x = "";
+    String y = "cabt";
     int result = new EditDistance().solution(x, y);
     System.out.println(result);
   }
