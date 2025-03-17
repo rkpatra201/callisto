@@ -2,15 +2,13 @@ package org.dsa.examples.dp.sum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 // this is to find unique combination that sum to a target.
 // but each element used once
 // https://leetcode.com/problems/combination-sum-ii/
 // https://leetcode.com/problems/combination-sum-ii/submissions/1571112186/
-public class HowTargetSum_Recursion_UseOnce {
+public class CombinationSum2 {
 
   public List<List<Integer>> solution(int target, int[] inputs) {
     List<List<Integer>> solutionSet = new ArrayList<>();
@@ -99,21 +97,11 @@ public class HowTargetSum_Recursion_UseOnce {
       if(index > position && inputs[index] == inputs[index-1]){
         continue;
       }
-
       int item = inputs[index];
       int rem = target - item;
-      if(rem < 0){
-        continue;
-      }
 
-
-      /**
-       *  clone is required because with each iteration of this loop,
-       *  it will append elements to the #currentValues, which is invalid
-       */
       currentValues.add(item);
-      solution1(rem, inputs, solutions, currentValues, index+1);
-
+      solution1(rem, inputs, solutions, currentValues, index+1); // each number use at most once. we are making sure we will not choose the already selected element
       currentValues.remove(currentValues.size() - 1);
     }
   }
