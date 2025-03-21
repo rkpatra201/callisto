@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class MergeSort {
   public void solution(int[] arr) {
-    if(arr.length <= 1){
+    if(arr.length == 1){
       return;
     }
     int mid = arr.length / 2;

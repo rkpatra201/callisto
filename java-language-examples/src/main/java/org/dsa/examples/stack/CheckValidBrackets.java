@@ -3,7 +3,7 @@ package org.dsa.examples.stack;
 import java.util.Stack;
 
 // https://leetcode.com/problems/valid-parenthesis-string/submissions/1579702963/
-//
+// https://www.notion.so/Valid-Brackets-with-1bc85d61746d80189dd9c6a796b677e5
 public class CheckValidBrackets {
   public boolean checkValidString(String s) {
     Stack<Integer> brackets = new Stack<>();

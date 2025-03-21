@@ -30,7 +30,6 @@ public class WordBreak2 {
       return;
     }
 
-    boolean flag = false;
     for (String word : wordDict) {
       if (!s.startsWith(word)) {
         continue;

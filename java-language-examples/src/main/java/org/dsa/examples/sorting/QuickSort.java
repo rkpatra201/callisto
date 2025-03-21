@@ -60,7 +60,6 @@ public class QuickSort {
     int temp = arr[end];
     arr[end] = arr[i];
     arr[i] = temp;
-
     return i;
   }
 }
