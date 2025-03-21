@@ -41,17 +41,19 @@ public class NewEvenOddProblem {
     @Override
     public void run() {
       synchronized (valueWrapper) {
-        while (valueWrapper.value <= 10) {
+        while (true) {
           System.out.println(this.workerName + ":" + valueWrapper.value);
           valueWrapper.value = valueWrapper.value + 1;
           valueWrapper.notify();
+          if(valueWrapper.value >= 10){
+            break;
+          }
           try {
             valueWrapper.wait();
           } catch (InterruptedException e) {
             throw new RuntimeException(e);
           }
         }
-        valueWrapper.notify();
       }
     }
   }
