@@ -8,19 +8,19 @@ import java.util.List;
 public class DepthFirstTraversalRecursion {
 
   public List<String> solution(Node node) {
-    List<String> traversedNodeNames = new ArrayList<>();
-    recursive(node, traversedNodeNames);
-    return traversedNodeNames;
+    List<String> output = new ArrayList<>();
+    recursive(node, output);
+    return output;
   }
 
-  private void recursive(Node node, List<String> traversalNames) {
+  private void recursive(Node node, List<String> output) {
     if (node == null) {
       return;
     }
-    traversalNames.add(node.getName());
+    output.add(node.getName());
     List<Node> edges = node.getNeighbours();
     for (Node edge : edges) {
-      recursive(edge, traversalNames);
+      recursive(edge, output);
     }
   }
 }

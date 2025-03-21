@@ -25,6 +25,10 @@ public class GridTraveller {
     int result = new GridPathMaxSumRecursion().solution(arr, 0, 0, 2, 2);
     System.out.println(result);
     Assert.assertEquals(8, result);
+
+    result = new GridPathMaxSumRecursion1().solution(arr, 0,0,1,1);
+    System.out.println(result);
+    Assert.assertEquals(8, result);
   }
 
   @Test

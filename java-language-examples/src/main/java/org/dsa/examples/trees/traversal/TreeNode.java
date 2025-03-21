@@ -8,4 +8,9 @@ public class TreeNode {
     public TreeNode(int data) {
         this.data = data;
     }
+
+    @Override
+    public String toString() {
+        return this.data +"-"+super.hashCode();
+    }
 }

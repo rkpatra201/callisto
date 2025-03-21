@@ -1,27 +1,29 @@
 package org.dsa.examples.dp.word;
 
+import org.dsa.examples.dp.sum.AppUtils;
+
 public class EditDistance {
 
-  public int solution(String x, String y){
-    return solution(x, y, x.length(), y.length());
+  public int solution(String x, String y) {
+    return solution(x, y, 0, 0);
   }
 
-  private int solution(String x, String y, int m, int n){
-    if(n == 0){
-      return m;
+  private int solution(String x, String y, int m, int n) {
+    if (n == y.length()) {
+      return x.length() - m;
     }
-    if(m == 0){
-      return n;
+    if (m == x.length()) {
+      return y.length() - n;
     }
-    if(x.charAt(m-1) == y.charAt(n-1)){
-      return solution(x, y, m-1, n-1);
+    if (x.charAt(m) == y.charAt(n)) {
+      return solution(x, y, m + 1, n + 1);
     }
 
-    int deleteFromSecondString = solution(x, y, m, n-1 );
-    int deleteFromFirstString = solution(x, y, m-1, n);
-    int replaceInBothString = solution(x, y, m-1,n-1);
-    int minValue = Math.min(deleteFromFirstString, deleteFromSecondString);
-    minValue = Math.min(minValue, replaceInBothString);
+    int deleteFromSecondString = solution(x, y, m, n + 1);
+    int deleteFromFirstString = solution(x, y, m + 1, n);
+    int replaceInBothString = solution(x, y, m + 1, n + 1);
+    int minValue = AppUtils.min(deleteFromFirstString, deleteFromSecondString, replaceInBothString);
+
     return 1 + minValue; // adding 1 because one success operation happening
   }
 }

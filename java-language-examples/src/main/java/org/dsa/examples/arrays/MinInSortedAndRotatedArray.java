@@ -1,6 +1,8 @@
 package org.dsa.examples.arrays;
 
 
+// https://www.youtube.com/watch?v=IzHR_U8Ly6c
+// https://leetcode.com/submissions/detail/1565179092/
 public class MinInSortedAndRotatedArray {
 
   /**
@@ -21,12 +23,15 @@ public class MinInSortedAndRotatedArray {
     while (start < end) {
       int mid = start + (end - start) / 2;
 
-      if (nums[mid] > nums[end]) {
-        // Minimum is in the right half
+      // when mid is smaller than its previous element, surely this mid is smallest in array
+      if (mid > 0 && nums[mid] < nums[mid - 1]) {
+        return nums[mid];
+      }
+
+      if (nums[start] <= nums[mid] && nums[mid] > nums[end]) { // left sorted but right is not
         start = mid + 1;
       } else {
-        // Minimum is in the left half (including mid)
-        end = mid;
+        end = mid - 1;
       }
 
     }
