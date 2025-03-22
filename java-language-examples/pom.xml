@@ -31,7 +31,7 @@
             <scope>test</scope>
         </dependency>
         <dependency>
-            <groupId>com.fico</groupId>
+            <groupId>com.test</groupId>
             <artifactId>alpha.xxxx</artifactId>
             <version>4.0.0</version>
             <scope>system</scope>
