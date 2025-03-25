@@ -1,4 +1,4 @@
-package org.dsa.examples.graph;
+package org.dsa.examples.graph.lc;
 
 import java.util.HashMap;
 import java.util.Map;
