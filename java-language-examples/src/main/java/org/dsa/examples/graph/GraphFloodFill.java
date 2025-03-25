@@ -23,9 +23,6 @@ public class GraphFloodFill {
     }
 
     int current = grid[row][col];
-    if(current == color){
-      return;
-    }
 
     if(current != original){
       return;
