@@ -9,7 +9,7 @@ public class _01ReverseALinkedList {
       return null;
     }
 
-    ListNode result = null;
+    ListNode reverseRoot = null;
 
     ListNode curr = head;
     while (true) {
@@ -21,15 +21,20 @@ public class _01ReverseALinkedList {
 
       curr = curr.next;
 
-      temp.next = result;
+      if(reverseRoot!=null){
+        ListNode oldRoot = reverseRoot;
+        reverseRoot = temp;
+        reverseRoot.next = oldRoot;
+        continue;
+      }
 
-      result = temp;
+      reverseRoot = temp;
+      reverseRoot.next = null;
     }
 
-    return result;
+    return reverseRoot;
 
   }
-
   private static class ListNode{
     int val;
     ListNode next;
