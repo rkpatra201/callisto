@@ -1,4 +1,4 @@
-package org.dsa.examples.graph.lc;
+package org.dsa.examples.graph.v1;
 
 // https://leetcode.com/submissions/detail/1584395675/
 public class CenterOfGraph {

@@ -1,4 +1,4 @@
-package org.dsa.examples.graph.traversal;
+package org.dsa.examples.graph.v1;
 
 import java.util.HashMap;
 import java.util.LinkedList;
