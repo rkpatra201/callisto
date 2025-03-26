@@ -17,6 +17,12 @@ public class SimpleStackDFS {
 
     for (int row = 0; row < rowMax; row++) {
       for (int col = 0; col < colMax; col++) {
+        if(graph[row][col] == 0){
+          continue;
+        }
+        if(visited.containsKey(row+":"+col)){
+          continue;
+        }
         dfs(graph, row, col, rowMax, colMax);
       }
     }
@@ -41,27 +47,28 @@ public class SimpleStackDFS {
       row = elem[0];
       col = elem[1];
 
-      boolean valid = row >= 0 && row < rowMax && col >= 0 && col < colMax;
-      if (!valid) {
-        continue;
-      }
-
-      if (graph[row][col] == 0) {
-        continue;
-      }
 
       String key = row + ":" + col;
-      if (visited.containsKey(key)) {
-        continue;
-      }
 
-      System.out.println(graph[row][col]);
+      System.out.println("result: "+graph[row][col]);
 
       visited.put(key, true);
 
-
       for (int[] dir : directions) {
-        stack.push(new int[]{row + dir[0], col + dir[1]});
+        int newRow = row + dir[0];
+        int newCol = col + dir[1];
+
+        boolean valid = newRow >= 0 && newRow < rowMax && newCol >= 0 && newCol < colMax && graph[newRow][newCol] != 0;
+        if (!valid) {
+          continue;
+        }
+
+        key = newRow + ":" + newCol;
+        if (visited.containsKey(key)) {
+          continue;
+        }
+      //  System.out.println("push: "+graph[newRow][newCol]);
+        stack.push(new int[]{newRow, newCol});
       }
 
     }
