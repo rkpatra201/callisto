@@ -21,7 +21,7 @@ public class WordLadder1 {
     Set<String> visited = new HashSet<>();
     visited.add(beginWord);
 
-    int levelCount = 1;  // Start from 1 because beginWord is included in the transformation
+    int levelCount = 1;  // Start from 1 because beginWord is included in the possible sequence
 
     while (!queue.isEmpty()) {
       int size = queue.size(); // Process all words in the current level
@@ -34,18 +34,70 @@ public class WordLadder1 {
 
         Set<String> neighbors = getEdges(words, word);
 
-        for (String neighbor : neighbors ) {
-          if (visited.contains(neighbor)) {
+        for (String neighbor : neighbors) {
+          if (visited.contains(neighbor)) { // this way we reduce the number of levels also avoid facing in visiting same word which may cause infinite loop.
             continue;
           }
           queue.add(neighbor);
           visited.add(neighbor);
         }
       }
-      levelCount++;  // Increment level after processing all words in the current level
+      levelCount++;  // Increment level after processing all words in the current level. Any node present in this level is a valid transistion from prev step
     }
     return 0;  // No path found
   }
+
+  /**
+   * hit : count = 1
+   * visited: hit
+   * queue: hit
+   * <p>
+   * <p>
+   * pop: hit, queue: []
+   * edges: hot
+   * visited: hit, hot
+   * queue: hot
+   * count++ for level once
+   * count=2
+   * <p>
+   * pop: hot, queue: [], count = 2
+   * edges: hit, dot*, lot* but (hit is already visited skip it)
+   * visited: hit, hot, dot, lot
+   * queue: dot, lot
+   * count++ for level once
+   * count=3
+   * <p>
+   * pop: dot, queue [lot], count = 3
+   * edges: hot, dog*, lot but (hot, lot already visited skip it)
+   * visited : hit, hot, dot, lot, dog
+   * queue: lot, dog
+   * <p>
+   * pop: lot, queue[dog], count = 3
+   * edges: hot, log*, dot (hot and dot skipped)
+   * visited: hit, hot, dot, lot, dog, log
+   * queue: dog, log
+   * count++ for level once
+   * count=4
+   * <p>
+   * pop: dog, queue[log], count = 4
+   * edges: dot, log, cog*
+   * visited: hit, hot, dot, lot, dog, log, cog
+   * queue: log, cog
+   * <p>
+   * pop: log, queue[cog], count = 4
+   * edges: lot, dog, cog
+   * visited: hit, hot, dot, lot, dog, log, cog
+   * queue: cog
+   * count++ for level once
+   * count=5
+   * <p>
+   * pop: cog, queue[], count = 5
+   * matches so return count
+   *
+   * @param words
+   * @param word
+   * @return
+   */
 
   private Set<String> getEdges(Set<String> words, String word) {
     Set<String> edges = new HashSet<>();
