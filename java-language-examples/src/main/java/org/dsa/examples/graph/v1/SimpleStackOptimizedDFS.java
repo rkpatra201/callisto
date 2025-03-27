@@ -40,6 +40,7 @@ public class SimpleStackDFS {
     };
     Stack<int[]> stack = new Stack<>();
     stack.push(new int[]{row, col});
+    visited.put(row+":"+col, true);
 
     while (!stack.isEmpty()) {
 
@@ -47,12 +48,8 @@ public class SimpleStackDFS {
       row = elem[0];
       col = elem[1];
 
-
-      String key = row + ":" + col;
-
       System.out.println("result: "+graph[row][col]);
 
-      visited.put(key, true);
 
       for (int[] dir : directions) {
         int newRow = row + dir[0];
@@ -63,12 +60,13 @@ public class SimpleStackDFS {
           continue;
         }
 
-        key = newRow + ":" + newCol;
+        String key = newRow + ":" + newCol;
         if (visited.containsKey(key)) {
           continue;
         }
       //  System.out.println("push: "+graph[newRow][newCol]);
         stack.push(new int[]{newRow, newCol});
+        visited.put(key, true);
       }
 
     }
