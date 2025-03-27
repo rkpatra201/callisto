@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
-public class SimpleStackDFS {
+public class SimpleStackOptimizedDFS {
   public static void main(String[] args) {
     int[][] graph = {
         {10, 0, 20},
