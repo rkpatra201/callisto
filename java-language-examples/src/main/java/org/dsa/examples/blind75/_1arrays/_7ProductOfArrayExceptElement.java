@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w1;
+package org.dsa.examples.blind75.arrays;
 
 // https://leetcode.com/problems/product-of-array-except-self/submissions/1582454713/
 public class _7ProductOfArrayExceptElement {

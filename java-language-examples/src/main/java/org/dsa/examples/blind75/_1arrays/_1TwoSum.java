@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w1;
+package org.dsa.examples.blind75.arrays;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w1;
+package org.dsa.examples.blind75.arrays;
 
 
 // https://leetcode.com/problems/maximum-product-subarray/submissions/1583607189/
