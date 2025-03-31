@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.arrays;
+package org.dsa.examples.blind75._1arrays;
 
 // https://leetcode.com/problems/maximum-subarray/submissions/1582310000/
 public class _6MaxSumSubArray {

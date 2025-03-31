@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w2;
+package org.dsa.examples.blind75._4graph;
 
 import java.util.HashMap;
 import java.util.Map;

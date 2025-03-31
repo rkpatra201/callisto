@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w1;
+package org.dsa.examples.blind75._8string;
 
 // https://leetcode.com/problems/valid-anagram/submissions/1581468136/
 public class _4ValidAnagram {

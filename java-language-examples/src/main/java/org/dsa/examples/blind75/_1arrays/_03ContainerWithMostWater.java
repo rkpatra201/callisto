@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.arrays;
+package org.dsa.examples.blind75._1arrays;
 
 // https://leetcode.com/problems/container-with-most-water/submissions/1584685368/
 public class _03ContainerWithMostWater {

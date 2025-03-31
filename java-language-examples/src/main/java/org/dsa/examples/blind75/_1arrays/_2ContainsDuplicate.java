@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.arrays;
+package org.dsa.examples.blind75._1arrays;
 
 import java.util.HashSet;
 import java.util.Set;

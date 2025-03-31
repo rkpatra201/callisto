@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w2;
+package org.dsa.examples.blind75._8string;
 
 // https://leetcode.com/problems/palindromic-substrings/submissions/1584722988/
 public class _07CountPalinSubStrings {

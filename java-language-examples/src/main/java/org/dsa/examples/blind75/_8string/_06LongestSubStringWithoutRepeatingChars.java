@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w2;
+package org.dsa.examples.blind75._8string;
 
 // https://leetcode.com/problems/longest-substring-without-repeating-characters/submissions/1584716294/
 public class _06LongestSubStringWithoutRepeatingChars {

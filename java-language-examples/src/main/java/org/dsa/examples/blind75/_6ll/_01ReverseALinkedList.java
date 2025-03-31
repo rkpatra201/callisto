@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w2;
+package org.dsa.examples.blind75._6ll;
 
 // https://leetcode.com/problems/reverse-linked-list/submissions/1585919938/
 public class _01ReverseALinkedList {

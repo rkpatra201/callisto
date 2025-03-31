@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w1;
+package org.dsa.examples.blind75._8string;
 
 import java.util.ArrayList;
 import java.util.HashMap;
