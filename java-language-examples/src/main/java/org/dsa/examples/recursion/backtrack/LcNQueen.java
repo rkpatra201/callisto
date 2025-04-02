@@ -1,11 +1,13 @@
 package org.dsa.examples.recursion.backtrack;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 // leetcode: hard
 // backtracking
-public class NQueen {
+public class LcNQueen {
 
   private static class Position {
     int row;
@@ -25,9 +27,14 @@ public class NQueen {
     }
   }
 
+  public static void main(String[] args) {
+    new LcNQueen().solution(4);
+  }
+
+  private List<List<String>> result = new ArrayList<>();
   public List<Position> solution(int n) {
     List<Position> positions = new ArrayList<>();
-    solveNQueenCol(n, 0, positions);
+    solveNQueenAllSolns(n, 0, positions);
     //  System.out.println(positions);
     return positions;
   }
@@ -47,65 +54,30 @@ public class NQueen {
     return false;
   }
 
-  private boolean solveNQueenRow(int n, int col, List<Position> positionList) {
-
-    if (col == n) {
-      System.out.println(positionList);
-      return true;
-    }
-
-    for (int row = 0; row < n; row++) {
-
-      if (isUnderAttack(positionList, row, col)) {
-        continue;
-      }
-
-      Position p = new Position(row, col);
-      positionList.add(p);
-      boolean flag = solveNQueenRow(n, col + 1, positionList);
-      if (flag) {
-        return true;
-      }
-      positionList.remove(p);
-    }
-    return false;
-  }
-
-
-  private boolean solveNQueenCol(int n, int row, List<Position> positionList) {
-
-    if (row == n) {
-      System.out.println(positionList);
-      return true;
-    }
-
-    for (int col = 0; col < n; col++) {
-
-      if (isUnderAttack(positionList, row, col)) {
-        continue;
-      }
-      Position p = new Position(row, col);
-      positionList.add(p);
-      boolean flag = solveNQueenCol(n, row + 1, positionList);
-      if (flag) {
-        return true; // as we want to find one solution, so return from here without backtrack
-      }
-      positionList.remove(p); // backtrack
-    }
-    return false;
-  }
-
-
   public void solveNQueenAllSolns(int n, int row, List<Position> positionList) {
 
     if (row == n) {
+
       System.out.println(positionList);
+
+      List<String> x = new ArrayList<>();
+      for(Position p: positionList){
+        char[] str = new char[n];
+        Arrays.fill(str,'.');
+        str[p.col] = 'Q';
+        x.add(new String(str));
+      }
+
+      if(!x.isEmpty()){
+        result.add(x);
+      }
 //      return true;
     }
 
     for (int col = 0; col < n; col++) {
 
       if (isUnderAttack(positionList, row, col)) {
+        state = state +".";
         continue;
       }
 
@@ -120,9 +92,4 @@ public class NQueen {
 
 //    return false;
   }
-
-  public void solveNQueenAllSolns(int n) {
-    solveNQueenAllSolns(n, 0, new ArrayList<>());
-  }
-
 }
