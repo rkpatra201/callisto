@@ -1,0 +1,32 @@
+package org.dsa.examples.v1.graph.traversal;
+
+import org.dsa.examples.v1.graph.traversal.ShortedDistanceBetween2NodesBfs;
+import org.junit.Assert;
+import org.junit.Test;
+import utils.GraphUtils;
+
+
+public class ShortedDistanceBetween2NodesBfsTest {
+
+  @Test
+  public void solution() {
+
+    String[][] edges = {
+        {"A", "B"},
+        {"A", "D"},
+        {"D", "E"},
+        {"B", "C"},
+        {"C", "H"},
+        {"C", "F"},
+        {"H", "K"},
+        {"K", "F"},
+        {"F", "K"},
+        {"F", "G"},
+    };
+    GraphUtils.Graph graph = GraphUtils.createUndirectedPathGraph(edges);
+
+    ShortedDistanceBetween2NodesBfs bfs = new ShortedDistanceBetween2NodesBfs();
+    int result = bfs.solution(graph, "A", "G");
+    Assert.assertEquals(4, result);
+  }
+}
