@@ -3,6 +3,7 @@ package org.dsa.examples.blind75._9tree;
 import org.dsa.examples.v1.trees.traversal.TreeNode;
 
 // in order
+// https://leetcode.com/problems/kth-smallest-element-in-a-bst/submissions/1596138730/
 public class _230KthSmallestBst {
   public int kthSmallest(TreeNode root, int k) {
     result = -1;
