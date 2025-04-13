@@ -1,7 +1,7 @@
 package org.dsa.examples.blind75._6ll;
 
 // https://leetcode.com/problems/linked-list-cycle/submissions/1585938015/
-public class _02DetectCycleInLinkedList {
+public class _141DetectCycleInLinkedList {
 
   class ListNode {
     int val;
