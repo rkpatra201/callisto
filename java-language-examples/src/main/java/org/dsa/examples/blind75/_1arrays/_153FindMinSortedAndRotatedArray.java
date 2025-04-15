@@ -1,7 +1,7 @@
 package org.dsa.examples.blind75._1arrays;
 
 // https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/submissions/1584692330/
-public class _04FindMinSortedAndRotatedArray {
+public class _153FindMinSortedAndRotatedArray {
 
   public int findMin(int[] nums) {
 

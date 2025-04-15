@@ -1,7 +1,7 @@
 package org.dsa.examples.blind75._1arrays;
 
 // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/submissions/1581459886/
-public class _3BestTimeToBuySellStock {
+public class _121BestTimeToBuySellStock {
   public int maxProfit(int[] prices) {
     int maxProfit = 0;
     int minPrice = prices[0];
