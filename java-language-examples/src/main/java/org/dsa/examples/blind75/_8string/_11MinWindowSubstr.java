@@ -1,4 +1,4 @@
-package org.dsa.examples.blind75.w2;
+package org.dsa.examples.blind75._8string;
 
 public class _11MinWindowSubstr {
 }

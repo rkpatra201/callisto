@@ -1,7 +1,7 @@
 package org.dsa.examples.blind75._8string;
 
 // https://leetcode.com/problems/valid-anagram/submissions/1581468136/
-public class _4ValidAnagram {
+public class _242ValidAnagram {
   public boolean isAnagram(String s, String t) {
     if (s.length() != t.length()) {
       return false;

@@ -3,7 +3,7 @@ package org.dsa.examples.blind75._8string;
 import java.util.Stack;
 
 // https://leetcode.com/problems/valid-parentheses/submissions/1582307554/
-public class _5ValidBrackets {
+public class _20ValidBrackets {
   public boolean isValid(String s) {
     Stack<Integer> stack = new Stack<>();
     boolean flag = false;
