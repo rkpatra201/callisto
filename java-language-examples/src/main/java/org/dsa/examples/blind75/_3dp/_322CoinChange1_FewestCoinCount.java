@@ -22,7 +22,7 @@ public class _322CoinChange1_FewestCoinCount {
     for (int coin : coins) {
       int res = dfs(coins, amount - coin);
       if (res != -1) {
-        min = Math.min(min, res + 1); // +1 for current coin
+        min = Math.min(min, res);
       }
     }
 
