@@ -1,4 +1,4 @@
-package org.dsa.examples.lc.dp.sum;
+package org.dsa.examples.lc.recursion.backtracking.sum;
 
 import java.util.ArrayList;
 import java.util.Arrays;
