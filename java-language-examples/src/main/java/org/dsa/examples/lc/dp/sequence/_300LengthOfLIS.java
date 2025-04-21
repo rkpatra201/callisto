@@ -3,7 +3,7 @@ package org.dsa.examples.lc.dp.sequence;
 import java.util.Arrays;
 
 public class _300LengthOfLIS {
-  // similar to problem number 320
+  // similar to problem number 320 where we used dfs + memo in a grid for longest increasing path
   public int lengthOfLIS(int[] nums) {
     int n = nums.length;
     visited = new boolean[n];
@@ -49,7 +49,7 @@ public class _300LengthOfLIS {
     }
 
     visited[index] = false;
-    memo[index] = 1 + levelMax;
+    memo[index] = 1 + levelMax; // for current index or element we add 1
 
     return memo[index];
 

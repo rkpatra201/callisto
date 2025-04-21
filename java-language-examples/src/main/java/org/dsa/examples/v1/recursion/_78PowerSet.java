@@ -3,7 +3,7 @@ package org.dsa.examples.v1.recursion;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PowerSet {
+public class _78PowerSet {
 
   public void solution(int[] arr) {
 

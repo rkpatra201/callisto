@@ -5,9 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.PriorityQueue;
 // https://leetcode.com/problems/top-k-frequent-elements/submissions/1597878995/
-public class TopKElements {
+public class _347TopKElements {
   public static void main(String[] args) {
-    TopKElements el = new TopKElements();
+    _347TopKElements el = new _347TopKElements();
     int[] nums = {1, 1, 2, 2, 2, 3, 3, 3, 3};
     el.topKFrequent(nums, 2);
   }
