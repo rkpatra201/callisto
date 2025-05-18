@@ -1,6 +1,6 @@
 package utils;
 
-import org.dsa.examples.graph.Node;
+import org.dsa.examples.v1.graph.Node;
 
 import java.util.HashMap;
 import java.util.HashSet;
@@ -38,6 +38,35 @@ public class GraphUtils {
     return node1;
   }
 
+
+  public static void displayAdjacencyList(Graph graph) {
+
+    Queue<Node> queue = new LinkedList<>();
+    Set<String> names = new HashSet<>();
+    Set<String> nodeNames = graph.getNodes();
+
+    for (String name : nodeNames) {
+      if (names.contains(name)) {
+        continue;
+      }
+      Node node = graph.getNode(name);
+      queue.add(node);
+      names.add(name);
+
+      while (!queue.isEmpty()) {
+        Node current = queue.poll();
+        System.out.println(current.asString());
+        current.getNeighbours().stream().forEach(e -> {
+          if (!names.contains(e.getName())) {
+            queue.add(e);
+            names.add(e.getName());
+          }
+        });
+      }
+    }
+  }
+
+
   public static void displayAdjacencyList(Node node) {
     Queue<Node> queue = new LinkedList<>();
     Set<String> names = new HashSet<>();
@@ -59,7 +88,7 @@ public class GraphUtils {
     for (String[] edge : edges) {
       String v1 = edge[0];
       String v2 = edge[1];
-      Graph.getInstance().addMapping(v1, v2);
+      Graph.getInstance().addMapping(v1, v2, false);
     }
     return Graph.getInstance().getRootNode();
   }
@@ -74,10 +103,27 @@ public class GraphUtils {
       if (edge.length >= 2)
         v2 = edge[1];
 
-      graph.addMapping(v1, v2);
+      graph.addMapping(v1, v2, false);
     }
     return graph;
   }
+
+
+  public static Graph createDirectedPathGraph(String[][] edges) {
+    Graph graph = new Graph();
+    for (String[] edge : edges) {
+      String v1 = null;
+      String v2 = null;
+      if (edge.length >= 1)
+        v1 = edge[0];
+      if (edge.length >= 2)
+        v2 = edge[1];
+
+      graph.addMapping(v1, v2, true);
+    }
+    return graph;
+  }
+
 
   public static class Graph {
     private static Graph INSTANCE = new Graph();
@@ -88,7 +134,7 @@ public class GraphUtils {
       return INSTANCE;
     }
 
-    public void addMapping(String name1, String name2) {
+    public void addMapping(String name1, String name2, boolean directed) {
       if (name1 != null && !nodeMapping.containsKey(name1)) {
         Node node = new Node(name1);
         if (rootNode == null) {
@@ -100,9 +146,11 @@ public class GraphUtils {
         Node node = new Node(name2);
         nodeMapping.put(name2, node);
       }
-      if(name1!=null && name2!=null) {
+      if (name1 != null && name2 != null) {
         nodeMapping.get(name1).addNeighbour(nodeMapping.get(name2));
-        nodeMapping.get(name2).addNeighbour(nodeMapping.get(name1));
+        if(!directed) {
+          nodeMapping.get(name2).addNeighbour(nodeMapping.get(name1));
+        }
       }
     }
 

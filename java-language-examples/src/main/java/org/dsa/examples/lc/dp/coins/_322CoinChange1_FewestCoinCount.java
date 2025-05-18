@@ -3,7 +3,7 @@ package org.dsa.examples.lc.dp.coins;
 import java.util.Arrays;
 
 // https://leetcode.com/problems/coin-change/submissions/1597838077/
-public class CoinChange1_FewestCoinCount {
+public class _322CoinChange1_FewestCoinCount {
   public int coinChange(int[] coins, int amount) {
     memo = new int[amount + 1];
     Arrays.fill(memo, -2); // -2 means unvisited, -1 = not possible

@@ -43,11 +43,9 @@ public class _40CombinationPrint2 {
       if (index > position && inputs[index] == inputs[index - 1]) {
         continue;
       }
-      int item = inputs[index];
-      int rem = target - item;
 
-      currentValues.add(item);
-      solution1(rem, inputs, solutions, currentValues, index + 1);
+      currentValues.add(inputs[index]);
+      solution1(target - inputs[index], inputs, solutions, currentValues, index + 1);
       currentValues.remove(currentValues.size() - 1);
 
     }

@@ -29,28 +29,25 @@ public class ShortedDistanceBetween2NodesBfs {
     distanceNodeQueue.add(distanceNode);
 
     int shortestDistance = 0;
-    while (true) {
-      if (distanceNodeQueue.isEmpty()) {
-        break;
-      }
+    while (!distanceNodeQueue.isEmpty()) {
 
       DistanceNode currentNode = distanceNodeQueue.poll();
-      if (visitedNodes.contains(currentNode.name)) {
+      if (visitedNodes.contains(currentNode.name)) { // skip visited nodes
         continue;
       }
 
-      if (target.equals(currentNode.name)) {
+      if (target.equals(currentNode.name)) { // target arrived
         shortestDistance = currentNode.distance;
         break;
       }
 
       visitedNodes.add(currentNode.name);
       for (Node node : graph.getNode(currentNode.name).getNeighbours()) {
-        DistanceNode currentDistanceNode = new DistanceNode();
-        currentDistanceNode.source = source;
-        currentDistanceNode.name = node.getName();
-        currentDistanceNode.distance = currentNode.distance + 1;
-        distanceNodeQueue.add(currentDistanceNode);
+        DistanceNode nextLevelDistanceNode = new DistanceNode();
+        nextLevelDistanceNode.source = source;
+        nextLevelDistanceNode.name = node.getName();
+        nextLevelDistanceNode.distance = currentNode.distance + 1;
+        distanceNodeQueue.add(nextLevelDistanceNode);
       }
 
     }

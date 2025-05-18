@@ -1,12 +1,10 @@
-package org.dsa.examples.v1.graph.v1;
+package org.dsa.examples.v1.graph.v1.connected;
 
 import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
-public class LargestConnectedComponentBfsStack {
+public class LargestConnectedComponentDfsStack {
 
   private static int[][] graph = {
       {1, 1, 1, 0, 0, 0, 0, 0},
@@ -31,9 +29,9 @@ public class LargestConnectedComponentBfsStack {
         }
         //  visited.clear();
         visited.add(row + ":" + col);
-        Queue<int[]> queue = new LinkedList<>();
-        queue.add(new int[]{row, col});
-        bfs(queue, rowMax, colMax, visited);
+        Stack<int[]> stack = new Stack<>();
+        stack.push(new int[]{row, col});
+        dfs(stack, rowMax, colMax, visited);
         int total = visited.size();
         System.out.println("component size: " + (total - prevCount));
         prevCount = total;
@@ -48,11 +46,11 @@ public class LargestConnectedComponentBfsStack {
       {0, -1},
   };
 
-  private static void bfs(Queue<int[]> queue, int rowMax, int colMax, Set<String> visited) {
+  private static void dfs(Stack<int[]> stack, int rowMax, int colMax, Set<String> visited) {
 
 
-    while (!queue.isEmpty()) {
-      int[] elem = queue.poll();
+    while (!stack.isEmpty()) {
+      int[] elem = stack.pop();
       int row = elem[0];
       int col = elem[1];
       for (int[] dir : directions) {
@@ -68,7 +66,8 @@ public class LargestConnectedComponentBfsStack {
           continue;
         }
         visited.add(newRow + ":" + newCol);
-        queue.add(new int[]{newRow, newCol});
+
+        stack.push(new int[]{newRow, newCol});
       }
     }
 

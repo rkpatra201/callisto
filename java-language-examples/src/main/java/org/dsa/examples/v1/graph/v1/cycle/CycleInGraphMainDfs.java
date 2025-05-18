@@ -1,16 +1,15 @@
-package org.dsa.examples.v1.graph.v1;
+package org.dsa.examples.v1.graph.v1.cycle;
 
 import org.dsa.examples.v1.graph.Node;
 import utils.GraphUtils;
 
 import java.util.HashMap;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Map;
-import java.util.Queue;
 import java.util.Set;
+import java.util.Stack;
 
-public class CycleInGraphMainBfs {
+public class CycleInGraphMainDfs {
   /**
    * 1 -- 2---4---|
    * |           |
@@ -52,12 +51,11 @@ public class CycleInGraphMainBfs {
   public static void main(String[] args) {
     String[][] edges = {
         {"1", "2"},
-        {"1", "3"},
-        {"2", "4"},
-        {"3", "5"},
+        {"2", "3"},
+        {"3", "4"},
+        {"4", "5"},
+        {"5", "6"},
         {"3", "6"},
-        {"4", "8"},
-        {"5", "8"},
         // another component below
         {"7", "9"},
         {"7", "10"},
@@ -73,7 +71,7 @@ public class CycleInGraphMainBfs {
     Set<String> nodes = graph.getNodes();
 
     Set<String> visited = new HashSet<>();
-    Queue<Node> queue = new LinkedList<>();
+    Stack<Node> stack = new Stack<>();
 
     boolean found = false;
     for (String node : nodes) {
@@ -83,8 +81,7 @@ public class CycleInGraphMainBfs {
       }
 
       parentTracker.put(node, null);
-
-      queue.add(graph.getNode(node));
+      stack.push(graph.getNode(node));
       visited.add(node);
       found = false;
       // as the element is added to queue,
@@ -107,41 +104,39 @@ public class CycleInGraphMainBfs {
        */
 
 
-      while (!queue.isEmpty()) {
-        int size = queue.size();
-        for (int i = 0; i < size; i++) {
-
-          Node current = queue.poll();
-
-          String parentName = parentTracker.get(current.getName());
-
-          for (Node neighbour : current.getNeighbours()) {
-
-            // current nodes neighbours contain its parent also.
-            // ex: 1,2,3 For node 2 edges are [1,3]
-            // we should not visit 1 as it is parent of 2.
-            // so visit 3 and mark it as visited
-            // but what if 3 is already visited by someone, then 3 is forming cycle.
+      while (!stack.isEmpty()) {
 
 
-            // we should be visiting this neighbour who is not parent, but it is already visited by someone else
-            // so it is a cycle
-            if (!found && !neighbour.getName().equals(parentName) && visited.contains(neighbour.getName())) {
-              System.out.println("cycle: " + neighbour.getName());
-              found = true;
-            }
+        Node current = stack.pop();
 
-            if (neighbour.getName().equals(parentName)) {
-              continue;
-            }
-            if (visited.contains(neighbour.getName())) {
-              continue;
-            }
+        String parentName = parentTracker.get(current.getName());
 
-            queue.add(neighbour);
-            visited.add(neighbour.getName());
-            parentTracker.put(neighbour.getName(), current.getName());
+        for (Node neighbour : current.getNeighbours()) {
+
+          // current nodes neighbours contain its parent also.
+          // ex: 1,2,3 For node 2 edges are [1,3]
+          // we should not visit 1 as it is parent of 2.
+          // so visit 3 and mark it as visited
+          // but what if 3 is already visited by someone, then 3 is forming cycle.
+
+
+          // we should be visiting this neighbour who is not parent, but it is already visited by someone else
+          // so it is a cycle
+          if (!found && !neighbour.getName().equals(parentName) && visited.contains(neighbour.getName())) {
+            System.out.println("cycle: " + neighbour.getName());
+            found = true;
           }
+
+          if (neighbour.getName().equals(parentName)) {
+            continue;
+          }
+          if (visited.contains(neighbour.getName())) {
+            continue;
+          }
+
+          stack.push(neighbour);
+          visited.add(neighbour.getName());
+          parentTracker.put(neighbour.getName(), current.getName());
         }
       }
     }

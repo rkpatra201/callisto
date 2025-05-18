@@ -1,4 +1,4 @@
-package org.dsa.examples.v1.graph.v1;
+package org.dsa.examples.v1.graph.v1.connected;
 
 import java.util.HashSet;
 import java.util.Set;

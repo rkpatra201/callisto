@@ -9,7 +9,7 @@ You may assume that you have an infinite number of each kind of coin.
 
 The answer is guaranteed to fit into a signed 32-bit integer.
  */
-public class CoinChange2_UniqueCombinationCount {
+public class _518CoinChange2_UniqueCombinationCount {
   public int change(int amount, int[] coins) {
     // Initialize memo with -1 (uncomputed)
     Integer[][] memo = new Integer[coins.length][amount + 1];
