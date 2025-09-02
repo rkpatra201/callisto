@@ -1,5 +1,6 @@
 package org.dsa.examples.recursion;
 
+import org.dsa.examples.recursion.backtrack.NQueen;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
