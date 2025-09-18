@@ -6,7 +6,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.Stack;
 
 public class TraverseAL {
   public static void main(String[] args) {
@@ -18,22 +17,28 @@ public class TraverseAL {
         {'b', 'd'},
         {'c', 'e'}
     };
-    dfs(buildGraph(edges), edges[0][0]);
+    Map<Character, List<Character>> graph = buildGraph(edges);
+    System.out.println("DFS traversal starting from 'a':");
+    dfs(graph, 'a');
   }
 
-  private static Set<Character> visited = new HashSet<>();
+  // Public wrapper method to start the DFS
+  public static void dfs(Map<Character, List<Character>> graph, Character start) {
+      Set<Character> visited = new HashSet<>();
+      dfsRecursive(graph, start, visited);
+  }
 
-  private static void dfs(Map<Character, List<Character>> graph, Character start) {
+  private static void dfsRecursive(Map<Character, List<Character>> graph, Character start, Set<Character> visited) {
     if (visited.contains(start)) {
       return;
     }
     visited.add(start);
     System.out.println(start);
 
-    List<Character> friends = graph.get(start);
-    if (friends != null) {
-      for (Character f : friends) {
-        dfs(graph, f);
+    List<Character> neighbors = graph.get(start);
+    if (neighbors != null) {
+      for (Character neighbor : neighbors) {
+        dfsRecursive(graph, neighbor, visited);
       }
     }
   }
