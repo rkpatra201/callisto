@@ -25,7 +25,9 @@ public class NthRoot {
       /**
        * We return end because,
        * after the binary search loop,
-       * end will be the largest integer whose square is less than or equal to n. If n is not a perfect square,
+       * end will be the largest integer whose square is less than or equal to n.
+       *
+       * If n is not a perfect square,
        * the loop exits when start surpasses end,
        * and end holds the closest integer root.
        * This ensures the function returns the integer part of the square root.

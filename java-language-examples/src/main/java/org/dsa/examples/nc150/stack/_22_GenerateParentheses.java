@@ -16,10 +16,10 @@ public class _22_GenerateParentheses {
             return;
         }
 
-        if (open < max) {
+        if (open < max) { // open brackets can be added
             backtrack(result, current + "(", open + 1, close, max);
         }
-        if (close < open) {
+        if (close < open) { // close brackets can be added
             backtrack(result, current + ")", open, close + 1, max);
         }
     }

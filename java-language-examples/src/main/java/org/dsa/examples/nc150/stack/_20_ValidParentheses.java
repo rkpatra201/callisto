@@ -10,7 +10,7 @@ public class _20_ValidParentheses {
                 stack.push('}');
             } else if (c == '[') {
                 stack.push(']');
-            } else if (stack.isEmpty() || stack.pop() != c) {
+            } else if (stack.isEmpty() || stack.pop() != c) { // got a closing bracket but stack is empty or top of stack is not matching
                 return false;
             }
         }

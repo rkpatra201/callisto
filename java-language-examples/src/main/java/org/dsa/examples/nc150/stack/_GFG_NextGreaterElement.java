@@ -14,7 +14,7 @@ class _GFG_NextGreaterElement {
             }
             int res  = s.isEmpty() ? -1 : s.peek();
             list.add(res);
-            s.push(arr[i]);
+            s.push(current);
         }
         Collections.reverse(list); // this reverse is important for ordering
         return list;
