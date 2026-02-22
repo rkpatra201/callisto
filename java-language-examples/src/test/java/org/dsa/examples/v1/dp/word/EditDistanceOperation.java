@@ -1,0 +1,27 @@
+package org.dsa.examples.v1.dp.word;
+
+import org.dsa.examples.v1.dp.word.EditDistance;
+import org.dsa.examples.v1.dp.word.EditDistanceTabulation;
+import org.junit.Test;
+
+public class EditDistanceOperation {
+
+  // https://www.enjoyalgorithms.com/blog/edit-distance
+  // recursion
+  @Test
+  public void solutionRecursive() {
+    String x = "";
+    String y = "cabt";
+    int result = new EditDistance().solution(x, y);
+    System.out.println(result);
+  }
+
+  @Test
+  public void solutionIterative() {
+    String x = "cu";
+    String y = "cut";
+    int result = new EditDistanceTabulation().solution(x, y);
+    System.out.println(result);
+
+  }
+}
